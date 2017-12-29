@@ -184,6 +184,17 @@
          "users" : $resource(api.baseUrl+'/dispositivos')
         };
 
+        api.gps = $resource(api.baseUrl, {},{
+          login : {
+            url: api.baseUrl+'/login',
+            method: 'POST',
+            isArray: false
+          }
+        });
+
+
+
+
         return api;
     }
 

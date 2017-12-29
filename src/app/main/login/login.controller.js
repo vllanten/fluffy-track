@@ -6,13 +6,25 @@
         .module('app.login')
         .controller('LoginV2Controller', LoginV2Controller);
 
-    /** @ngInject */
-    function LoginV2Controller()
+    function LoginV2Controller(api)
     {
-        // Data
+        var vm = this;
+        vm.form = {};
+        vm.identificarse = function(){
+        mv = false;
+          var parametros = {
+            username:vm.form.email,
+            password:vm.form.password
+          }
 
-        // Methods
-
-        //////////
+          api.gps.login(parametros,
+            function(response){
+              console.log(response.message);
+            },
+            function(error){
+              console.log(error)
+            }
+          );
+        }
     }
 })();
