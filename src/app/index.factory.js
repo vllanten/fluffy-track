@@ -1,37 +1,18 @@
-(function ()
-{
-    'use strict';
+(function () {
+  'use Stric';
 
-    angular
-      .module('fuse')
-      .factory('loginInterceptor', loginInterceptor)
-      .config(function($httpProvider) {
-        $httpProvider.interceptors.push('loginInterceptor');
-      })
+  function configuracionesGlobales() {
 
-    function loginInterceptor($q, $location) {
-      return {
-        request: function(config) {
-          //TODO rescatar tokenaccess desde localStorage
-          config.headers['tokenaccess'] = 'lalalalala';
-          return config;
-        },
-        requestError: function(config) {
-          return config;
-        },
-        response: function(res) {
-          //TODO guardar tokenaccess en localStorage
-          return res;
-        },
-        responseError: function(res) {
-          if (res.status === 401) {
-            var currentPath = $location.path();
-            $location.path('/login').search({'returnTo': currentPath});
-            return $q.reject(res);
-          }
-          return res;
-        }
-      }
-    }
+    var config = {};
+
+    config.baseUrl = "http://54.148.196.216:1880";
+
+    return config;
+
+  }
+
+  angular
+    .module('fuse')
+    .factory('configuracionesGlobales', configuracionesGlobales);
 
 })();

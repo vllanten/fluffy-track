@@ -11,18 +11,21 @@
     {
         var vm = this;
 
-        api.sample.users.query({},
-          function(response){
-            //vm.users = response;
+        api.gps.grupos({},
+          function (response) {
+
           },
-          function(error){}
-        )
+          function (error) {
+          }
+        );
 
-        // Data
-        vm.helloText = TrackData.data.helloText;
+        api.gps.dispositivos({},
+          function (response) {
 
-        // Methods
+          },
+          function (error) {
+          }
+        );
 
-        //////////
     }
 })();
