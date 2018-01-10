@@ -1,1 +1,91 @@
-track
+<div id="dashboard-project" class="page-layout simple right-sidenav ng-scope layout-row" layout="row">
+  <!-- CENTER -->
+  <div class="center ms-scroll flex ps-container ps-theme-default ps-active-y" flex="" ms-scroll="" data-ps-id="f647bc0f-e929-2314-4138-c467f4188cb9">
+    <!-- WIDGET GROUP -->
+    <div class="widget-group" layout="row" flex="100" layout-wrap>
+      <!-- WIDGET 2 -->
+      <ms-widget flippable="false" layout="column" flex="100" flex-gt-md="100">
+        <!-- Front -->
+        <ms-widget-front class="white-bg">
+          <div class="p-16" layout="row" layout-align="space-between center">
+            <div class="h3">{{vm.maps.title}}</div>
+            <md-menu>
+              <md-button aria-label="more" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                <md-icon md-font-icon="icon-dots-vertical"></md-icon>
+              </md-button>
+              <md-menu-content width="2">
+                <md-menu-item>
+                  <md-button ng-click="refreshWidget()" aria-label="Refresh widget">
+                    Refresh
+                  </md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+          </div>
+          <div>
+            <ui-gmap-google-map center="vm.maps.map.center" zoom="vm.maps.map.zoom" options="vm.maps.map.options">
+              <ui-gmap-markers models="vm.maps.map.markers" coords="'coords'">
+                <ui-gmap-windows show="show">
+                  <!-- <div ng-non-bindable>{{sessions}}</div> -->
+                </ui-gmap-windows>
+              </ui-gmap-markers>
+            </ui-gmap-google-map>
+          </div>
+        </ms-widget-front>
+        <!-- / Front -->
+      </ms-widget>
+      <!-- / WIDGET 2 -->
+    </div>
+    <!-- / WIDGET GROUP -->
+  </div>
+  <!-- / CENTER -->
+  <!-- SIDENAV -->
+  <md-sidenav class="sidenav md-sidenav-right md-closed ms-scroll ng-isolate-scope _md md-default-theme md-locked-open ps-container ps-theme-default ps-active-y"
+    md-is-locked-open="$mdMedia('gt-md')" md-component-id="sidenav" ms-scroll="" ms-sidenav-helper="" tabindex="-1" data-ps-id="1da5d810-1b97-1038-5265-fe4f26e389e9">
+    <!-- WIDGET GROUP -->
+    <div class="widget-group">
+      <!-- NOW WIDGET -->
+      <ms-widget flippable="false" class="sidenav-widget ms-widget ng-isolate-scope">
+        <!-- Front -->
+        <ms-widget-front class="ms-widget-front ng-scope">
+          <div class="pl-16 pr-8 pv-16 ng-scope layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
+            <div class="h3 ng-binding">Wednesday, 14:18:29
+            </div>
+          </div>
+          <div class="p-16 pb-24 ng-scope layout-align-center-center layout-column" layout="column" layout-align="center center">
+            <div class="h1 secondary-text">
+              <span class="ng-binding">January</span>
+            </div>
+            <div class="font-size-72 line-height-88 secondary-text font-weight-400 ng-binding">
+              10
+            </div>
+            <div class="h1 secondary-text">
+              <span class="ng-binding">2018</span>
+            </div>
+          </div>
+          <md-divider class="ng-scope md-default-theme"></md-divider>
+        </ms-widget-front>
+        <!-- / Front -->
+      </ms-widget>
+      <!-- / NOW WIDGET -->
+      <!-- WEATHER WIDGET -->
+      <ms-widget flippable="false" class="sidenav-widget ms-widget ng-isolate-scope">
+        <!-- Front -->
+        <ms-widget-front class="ms-widget-front ng-scope">
+          <div class="pl-16 pr-8 pv-16 ng-scope layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
+            <div class="h4 ng-binding">
+              <md-icon md-font-icon="icon-map-marker" class="icon mr-8 md-default-theme md-font material-icons icon-map-marker" role="img"
+                aria-label="icon-map-marker"></md-icon>
+              New York
+            </div>
+          </div>
+          <md-divider class="ng-scope md-default-theme"></md-divider>
+        </ms-widget-front>
+        <!-- / Front -->
+      </ms-widget>
+      <!-- / WEATHER WIDGET -->
+    </div>
+    <!-- / WIDGET GROUP -->
+  </md-sidenav>
+  <!-- / SIDENAV -->
+</div>

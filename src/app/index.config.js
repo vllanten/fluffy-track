@@ -11,8 +11,12 @@
 
 
   /** @ngInject */
-  function config($translateProvider) {
-    // Put your common app configurations here
+  function config(uiGmapGoogleMapApiProvider, $translateProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyDWGPWlGjDh3wrwKTKud05kuC0afxjS_4g',
+      v        : '3.exp',
+      libraries: 'weather,geometry,visualization'
+    });
 
     // angular-translate configuration
     $translateProvider.useLoader('$translatePartialLoader', {

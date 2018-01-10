@@ -9,6 +9,7 @@
       //'app.sample',
       'app.track',
       'app.login',
-      'LocalStorageModule'
+      'LocalStorageModule',
+      'uiGmapgoogle-maps'
     ]);
 })();
