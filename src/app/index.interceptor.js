@@ -27,8 +27,7 @@
       },
       responseError: function (res) {
         if (res.status === 401) {
-          var currentPath = $location.path();
-          $location.path('/login').search({ 'returnTo': currentPath });
+          $location.path('/login');
           return $q.reject(res);
         }
         return res;
