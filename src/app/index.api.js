@@ -21,7 +21,12 @@
       dispositivos: {
         url: configuracionesGlobales.baseUrl + '/dispositivos',
         method: 'GET'
-      }
+      },
+      puntos: {
+        url: configuracionesGlobales.baseUrl + '/puntos',
+        method: 'GET'
+      },
+
 
     });
 

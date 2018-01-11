@@ -31,14 +31,25 @@
           title: "este es el titulo"
         };
 
+        api.gps.puntos({},
+          function (response) {
+            console.log(response)
+
+          },
+          function (error) {
+          }
+        );
+
+
+
         uiGmapGoogleMapApi.then(function ()
         {
             vm.maps.map = {
               "center": {
-                  "latitude": 48.4061246,
-                  "longitude": -30.2047679
+                  "latitude": -33.4320525,
+                  "longitude": -70.6827659
               },
-              "zoom": 3,
+              "zoom": 10,
               "options": {
                   "minZoom": 3,
                   "scrollwheel": false
