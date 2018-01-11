@@ -10,6 +10,7 @@
     function TrackController(api, TrackData, uiGmapGoogleMapApi)
     {
         var vm = this;
+        var marcadores = [];
 
         api.gps.grupos({},
           function (response) {
@@ -31,18 +32,27 @@
           title: "este es el titulo"
         };
 
-        api.gps.puntos({},
+        api.gps.puntos({limit:1000, id_dispositivo:2},
           function (response) {
-            console.log(response)
+            var i = 0;
+            response.message.data.forEach(element => {
 
-          },
-          function (error) {
-          }
-        );
+              console.log(element.latitud);
+              marcadores.push( {
+                  "id": i,
+                  "coords": {
+                      "latitude": element.latitud,
+                      "longitude": element.longitud
+                  },
+                  "show": false,
+                  "sessions": "Sessions: 13"
+              });
+              i++;
+            });
 
+            console.log(marcadores);
 
-
-        uiGmapGoogleMapApi.then(function ()
+            uiGmapGoogleMapApi.then(function ()
         {
             vm.maps.map = {
               "center": {
@@ -54,19 +64,18 @@
                   "minZoom": 3,
                   "scrollwheel": false
               },
-              "markers": [
-                  {
-                      "id": 0,
-                      "coords": {
-                          "latitude": 47.285454,
-                          "longitude": 20.887874
-                      },
-                      "show": false,
-                      "sessions": "Sessions: 13"
-                  },
-              ]
+              "markers": marcadores
           };
         });
+
+          },
+          function (error) {
+          }
+        );
+
+
+
+
 
     }
 })();
