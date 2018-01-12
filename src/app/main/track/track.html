@@ -23,13 +23,39 @@
             </md-menu>
           </div>
           <div>
-            <ui-gmap-google-map center="vm.maps.map.center" zoom="vm.maps.map.zoom" options="vm.maps.map.options">
-              <ui-gmap-markers models="vm.maps.map.markers" coords="'coords'">
-                <ui-gmap-windows show="show">
-                  <!-- <div ng-non-bindable>{{sessions}}</div> -->
-                </ui-gmap-windows>
-              </ui-gmap-markers>
-            </ui-gmap-google-map>
+
+
+
+
+            <div class="map-wrapper">
+              <ui-gmap-google-map center="vm.maps.map.center" zoom="vm.maps.map.zoom" options="vm.maps.map.options">
+                <ui-gmap-markers models="vm.maps.map.markers" coords="'coords'">
+                  <ui-gmap-windows show="show">
+                    <!-- <div ng-non-bindable>{{sessions}}</div> -->
+                  </ui-gmap-windows>
+                </ui-gmap-markers>
+              </ui-gmap-google-map>
+            </div>
+
+
+            <style>
+
+            .map-wrapper {
+              position: relative;
+              height: calc(90vh - 4em - 64px);
+            }
+
+            .angular-google-map-container {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              height: 100%
+            }
+            </style>
+
+
           </div>
         </ms-widget-front>
         <!-- / Front -->
@@ -89,3 +115,4 @@
   </md-sidenav>
   <!-- / SIDENAV -->
 </div>
+

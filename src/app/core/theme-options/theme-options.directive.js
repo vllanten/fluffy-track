@@ -2,10 +2,10 @@
 {
     'use strict';
 
-    angular
-        .module('app.core')
-        .controller('MsThemeOptionsController', MsThemeOptionsController)
-        .directive('msThemeOptions', msThemeOptions);
+    // angular
+    //     .module('app.core')
+    //     .controller('MsThemeOptionsController', MsThemeOptionsController)
+    //     .directive('msThemeOptions', msThemeOptions);
 
     /** @ngInject */
     function MsThemeOptionsController($cookies, fuseTheming)
