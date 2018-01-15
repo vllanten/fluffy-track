@@ -30,7 +30,7 @@
       title: "este es el titulo"
     };
 
-    api.gps.puntos({ limit: 20, id_dispositivo: 2 },
+    api.gps.puntos({ limit: 1000, id_dispositivo: 2 },
       function (response) {
         var i = 0;
         response.message.data.forEach(function(element){
