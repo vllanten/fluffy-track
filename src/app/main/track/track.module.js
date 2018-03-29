@@ -44,9 +44,9 @@
             title    : 'Track',
             icon     : 'icon-tile-four',
             state    : 'app.track',
-            /*stateParams: {
+            stateParams: {
                 'param1': 'page'
-             },*/
+             },
             translate: 'TRACK.TRACK_NAV',
             weight   : 1
         });

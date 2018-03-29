@@ -10,62 +10,75 @@
     var vm = this;
     var marcadores = [];
 
-    api.gps.grupos({},
-      function (response) {
-
-      },
-      function (error) {
-      }
-    );
-
-    api.gps.dispositivos({},
-      function (response) {
-
-      },
-      function (error) {
-      }
-    );
-
-    vm.maps = {
-      title: "este es el titulo"
+    function getGrupos(){
+      api.gps.grupos({},
+        function (response) {
+  
+        },
+        function (error) {
+        }
+      );
     };
 
-    api.gps.puntos({ limit: 1000, id_dispositivo: 2 },
-      function (response) {
-        var i = 0;
-        response.message.data.forEach(function(element){
+    function getDispositivos  (){
+      api.gps.dispositivos({},
+        function (response) {
+  
+        },
+        function (error) {
+        }
+      );
+    };
 
-          marcadores.push({
-            "id": i,
-            "coords": {
-              "latitude": element.latitud,
-              "longitude": element.longitud
-            },
-            "show": false,
-            "sessions": "Sessions: 13"
+    function getPuntos  (){
+
+      api.gps.puntos({ limit: 10, id_dispositivo: 2 },
+        function (response) {
+          var i = 0;
+          response.message.data.forEach(function(element){
+  
+            marcadores.push({
+              id: i,
+              coords: {
+                latitude: element.latitud,
+                longitude: element.longitud
+              },
+              show : true,
+              labels: {
+                fecha : element.fecha
+              },
+            });
+            i++;
           });
-          i++;
-        });
+  
+          uiGmapGoogleMapApi.then(function () {
+            vm.maps.map = {
+              "center": {
+                "latitude": -33.4320525,
+                "longitude": -70.6827659
+              },
+              "zoom": 12,
+              "options": {
+                "minZoom": 3,
+                "scrollwheel": false
+              },
+              "markers": marcadores
+            };
+          });
+  
+        },
+        function (error) {
+        }
+      );
+    };
 
-        uiGmapGoogleMapApi.then(function () {
-          vm.maps.map = {
-            "center": {
-              "latitude": -33.4320525,
-              "longitude": -70.6827659
-            },
-            "zoom": 12,
-            "options": {
-              "minZoom": 3,
-              "scrollwheel": false
-            },
-            "markers": marcadores
-          };
-        });
+    vm.maps = {
+      title: "Puntos de control"
+    };
 
-      },
-      function (error) {
-      }
-    );
+    getGrupos()
+    getDispositivos()
+    getPuntos()
 
   }
 })();
