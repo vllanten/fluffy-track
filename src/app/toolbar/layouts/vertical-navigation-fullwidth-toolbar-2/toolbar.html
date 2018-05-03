@@ -21,9 +21,9 @@
             <md-icon class="s18" md-font-icon="icon-backburger"></md-icon>
         </md-button>
 
-        <ms-shortcuts></ms-shortcuts>
+        <!-- <ms-shortcuts></ms-shortcuts>
 
-        <div class="toolbar-separator"></div>
+        <div class="toolbar-separator"></div> -->
     </div>
 
     <div layout="row" layout-align="start center">
@@ -53,15 +53,15 @@
                 <md-menu-content width="3">
                     <md-menu-item class="md-indent" ui-sref="app.pages_profile">
                         <md-icon md-font-icon="icon-account" class="icon"></md-icon>
-                        <md-button>My Profile</md-button>
+                        <md-button>Mi Perfil</md-button>
                     </md-menu-item>
 
                     <md-menu-item class="md-indent" ui-sref="app.mail">
                         <md-icon md-font-icon="icon-email" class="icon"></md-icon>
-                        <md-button>Inbox</md-button>
+                        <md-button>Notificaciones</md-button>
                     </md-menu-item>
 
-                    <md-menu-item class="md-indent">
+                    <!-- <md-menu-item class="md-indent">
                         <md-icon md-font-icon ng-class="vm.userStatus.icon"
                                  ng-style="{'color': vm.userStatus.color }" class="icon"></md-icon>
                         <md-menu id="user-status-menu">
@@ -80,19 +80,19 @@
                                 </md-menu-item>
                             </md-menu-content>
                         </md-menu>
-                    </md-menu-item>
+                    </md-menu-item> -->
 
                     <md-menu-divider></md-menu-divider>
 
                     <md-menu-item class="md-indent">
-                        <md-icon md-font-icon="icon-logout" class="icon"></md-icon>
-                        <md-button ng-click="vm.logout()">Logout</md-button>
+                        <md-icon md-font-icon="icon-Cerrar sesión" class="icon"></md-icon>
+                        <md-button ng-click="vm.logout()">Cerrar sesión</md-button>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>
         </md-menu-bar>
 
-        <div class="toolbar-separator"></div>
+        <!-- <div class="toolbar-separator"></div>
 
         <ms-search-bar on-search="vm.search(query)" on-result-click="vm.searchResultClick(item)" debounce="300"></ms-search-bar>
 
@@ -120,11 +120,11 @@
             </md-menu-content>
         </md-menu>
 
-        <div class="toolbar-separator"></div>
+        <div class="toolbar-separator"></div> -->
 
-        <md-button id="quick-panel-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('quick-panel')"
+        <!-- <md-button id="quick-panel-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('quick-panel')"
                    aria-label="Toggle quick panel" translate translate-attr-aria-label="TOOLBAR.TOGGLE_QUICK_PANEL">
             <md-icon md-font-icon="icon-format-list-bulleted" class="icon"></md-icon>
-        </md-button>
+        </md-button> -->
     </div>
 </div>

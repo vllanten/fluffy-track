@@ -8,12 +8,12 @@
   /** @ngInject */
   function TrackController(api, TrackData, uiGmapGoogleMapApi) {
     var vm = this;
-    var marcadores = [];
+    vm.marcadores = [];
 
     function getGrupos(){
       api.gps.grupos({},
         function (response) {
-  
+
         },
         function (error) {
         }
@@ -23,7 +23,7 @@
     function getDispositivos  (){
       api.gps.dispositivos({},
         function (response) {
-  
+
         },
         function (error) {
         }
@@ -35,26 +35,26 @@
       api.gps.puntos({ limit: 10, id_dispositivo: 2 },
         function (response) {
           var i = 0;
+
           response.message.data.forEach(function(element){
-  
-            marcadores.push({
+            vm.marcadores.push({
               id: i,
               coords: {
                 latitude: element.latitud,
                 longitude: element.longitud
               },
-              show : true,
+              show : false,
               labels: {
                 fecha : element.fecha
               },
             });
             i++;
           });
-  
+
           uiGmapGoogleMapApi.then(function () {
             vm.maps.map = {
               "center": {
-                "latitude": -33.4320525,
+                "latitude": -33.454838,
                 "longitude": -70.6827659
               },
               "zoom": 12,
@@ -62,10 +62,10 @@
                 "minZoom": 3,
                 "scrollwheel": false
               },
-              "markers": marcadores
+              "markers": vm.marcadores
             };
           });
-  
+
         },
         function (error) {
         }
@@ -75,6 +75,17 @@
     vm.maps = {
       title: "Puntos de control"
     };
+
+    function refreshWidget(){
+      console.log("aca");
+      vm.marcadores= [];
+    };
+
+    vm.refreshWidget = function (){
+      // getPuntos()
+      console.log("aca");
+      vm.marcadores= [];
+    }
 
     getGrupos()
     getDispositivos()
