@@ -5,7 +5,9 @@
     "scripts": {
         "test": "gulp test",
         "serve": "gulp serve",
-        "build": "gulp"
+        "build": "gulp",
+        "predeploy" : "npm run build",
+        "deploy" : "scp -r -i ~/ClientesOpenVPN/AWSJessie.pem dist/ ec2-user@54.148.196.216:/home/ec2-user"
     },
     "devDependencies": {
         "browser-sync": "~2.9.11",
