@@ -1,4 +1,4 @@
-<div id="dashboard-project" class="page-layout simple right-sidenav ng-scope layout-row" layout="row">
+<div id="dashboard-project" class="page-layout simple right-sidenav  layout-row" layout="row">
   <!-- CENTER -->
   <div class="center ms-scroll flex ps-container ps-theme-default ps-active-y" flex="" ms-scroll="" data-ps-id="f647bc0f-e929-2314-4138-c467f4188cb9">
     <!-- WIDGET GROUP -->
@@ -9,21 +9,35 @@
         <ms-widget-front class="white-bg">
           <div class="p-16" layout="row" layout-align="space-between center">
             <div class="h3">{{vm.maps.title}}</div>
-            <md-menu>
-              <md-button aria-label="more" class="md-icon-button" ng-click="$mdMenu.open($event)">
-                <md-icon md-font-icon="icon-dots-vertical"></md-icon>
-              </md-button>
-              <md-menu-content width="2">
-                <md-menu-item>
-                  <md-button ng-click="vm.refreshWidget()" aria-label="Refresh widget">
+          </div>
+          <div class="form-wrapper">
+            <form name="selecccionForm" class="md-inline-form " novalidate="">
+              <div layout="column" layout-gt-sm="row" class="layout-gt-md-row layout-column">
+                <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                  <label>Dispositivos</label>
+                  <md-select ng-model="vm.selectedDispositivos" multiple>
+                    <md-option ng-value="topping.id_dispositivo" ng-repeat="topping in vm.dispositivos">{{topping.nombre}}</md-option>
+                  </md-select>
+                </md-input-container>
+                <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                  <div flex-gt-xs>
+                    <md-datepicker ng-model="ctrl.dateInicio" md-placeholder="Fecha inicio" md-open-on-focus></md-datepicker>
+                  </div>
+                </md-input-container>
+                <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                  <div flex-gt-xs>
+                    <md-datepicker ng-model="ctrl.dateFin" md-placeholder="Fecha Fin" md-open-on-focus></md-datepicker>
+                  </div>
+                </md-input-container>
+                <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                  <md-button class="md-raised md-primary" ng-click="vm.refreshWidget()" aria-label="Refresh widget">
                     Actualizar
                   </md-button>
-                </md-menu-item>
-              </md-menu-content>
-            </md-menu>
+                </md-input-container>
+              </div>
+            </form>
           </div>
           <div>
-
             <div class="map-wrapper">
               <ui-gmap-google-map center="vm.maps.map.center" zoom="vm.maps.map.zoom" options="vm.maps.map.options">
                 <ui-gmap-markers models="vm.maps.map.markers" coords="'coords'">
@@ -32,7 +46,8 @@
                       <p>
                         <strong>{{labels.fecha | date:'dd-MM-yyyy HH:mm:ss'}}</strong>
                       </p>
-                      <p>Lat: {{coords.latitude}} <br>   Log: {{coords.longitude}}</p>
+                      <p>Lat: {{coords.latitude}}
+                        <br> Log: {{coords.longitude}}</p>
                     </div>
                   </ui-gmap-windows>
                 </ui-gmap-markers>
@@ -40,23 +55,26 @@
             </div>
 
             <style>
+              .map-wrapper {
+                position: relative;
+                height: calc(90vh - 4em - 64px);
+              }
 
-            .map-wrapper {
-              position: relative;
-              height: calc(90vh - 4em - 64px);
-            }
+              .angular-google-map-container {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 100%
+              }
 
-            .angular-google-map-container {
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              right: 0;
-              left: 0;
-              height: 100%
-            }
+              md-input-container {
+                padding: 0px !important;
+                margin: 0px !important;
+              }
+
             </style>
-
-
           </div>
         </ms-widget-front>
         <!-- / Front -->
@@ -68,4 +86,3 @@
   <!-- / CENTER -->
 
 </div>
-
