@@ -19,18 +19,44 @@
                     <md-option ng-value="topping.id_dispositivo" ng-repeat="topping in vm.dispositivos">{{topping.nombre}}</md-option>
                   </md-select>
                 </md-input-container>
-                <md-input-container flex="" class="md-icon-float md-default-theme flex">
-                  <div flex-gt-xs>
-                    <md-datepicker ng-model="ctrl.dateInicio" md-placeholder="Fecha inicio" md-open-on-focus></md-datepicker>
-                  </div>
+
+                <md-input-container flex="" class="md-icon-float md-default-theme flex" >
+                    <div flex-gt-xs>
+                      <md-radio-group ng-model="vm.tipo" class="md-primary" ng-init="vm.tipo = 1" >
+                        <md-radio-button ng-value="1"> Intervalos<br/> </md-radio-button>
+                          <md-radio-button ng-value="2"> Fechas <br/> </md-radio-button>
+                      </md-radio-group>
+                    </div>
                 </md-input-container>
-                <md-input-container flex="" class="md-icon-float md-default-theme flex">
-                  <div flex-gt-xs>
-                    <md-datepicker ng-model="ctrl.dateFin" md-placeholder="Fecha Fin" md-open-on-focus></md-datepicker>
-                  </div>
-                </md-input-container>
-                <md-input-container flex="" class="md-icon-float md-default-theme flex">
-                  <md-button class="md-raised md-primary" ng-click="vm.refreshWidget()" aria-label="Refresh widget">
+
+                <div ng-show="vm.tipo == 2">
+                    <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                        <div flex-gt-xs>
+                          <md-datepicker ng-model="vm.dateInicio" md-placeholder="Fecha inicio" md-open-on-focus></md-datepicker>
+                        </div>
+                      </md-input-container>
+                      <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                        <div flex-gt-xs>
+                          <md-datepicker ng-model="vm.dateFin" md-placeholder="Fecha Fin" md-open-on-focus></md-datepicker>
+                        </div>
+                      </md-input-container>
+                </div>
+
+                <div ng-show="vm.tipo == 1">
+                    <md-input-container flex="" class="md-icon-float md-default-theme flex">
+                        <label>Intervalo</label>
+                        <md-select ng-model="vm.selectedIntervalo">
+                          <md-option ng-value="15" ng-init="vm.selectedIntervalo = 15 ">Últimos 15 minutos</md-option>
+                          <md-option ng-value="60">Última hora</md-option>
+                          <md-option ng-value="120">Últimas 2 horas</md-option>
+                          <md-option ng-value="240">Últimas 4 horas</md-option>
+                          <md-option ng-value="1440">Último día</md-option>
+                        </md-select>
+                      </md-input-container>
+                </div>
+
+                <md-input-container flex="" class="md-icon-float md-default-theme flex" >
+                  <md-button class="md-raised md-primary"  ng-click="vm.refreshWidget()" aria-label="Refresh widget">
                     Actualizar
                   </md-button>
                 </md-input-container>

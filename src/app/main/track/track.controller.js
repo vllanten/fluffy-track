@@ -13,6 +13,10 @@
     vm.dispositivos = [];
     vm.selectedDispositivos = [];
 
+    var today = new Date();
+    vm.dateInicio = today;
+    vm.dateFin = today;
+
     function getGrupos() {
       api.gps.grupos({},
         function (response) {
@@ -34,10 +38,18 @@
 
     function getPuntos() {
 
-      api.gps.puntos({ limit: 10, id_dispositivo: 2 },
+      var inicial = ""
+      var final = new Date(vm.dateFin.valueOf() + vm.dateFin.getTimezoneOffset() * 60000);
+
+      var query = {
+        // limit: 10,
+        id_dispositivo: vm.selectedDispositivos ,
+        fecha_ini: moment(vm.dateInicio).format('YYYY-MM-DD'),
+        fecha_fin:  moment(final).format('YYYY-MM-DD HH:mm:ss'),
+      };
+      api.gps.puntos(query,
         function (response) {
           var i = 0;
-
           response.message.data.forEach(function (element) {
             vm.marcadores.push({
               id: i,
@@ -95,7 +107,6 @@
 
     vm.refreshWidget = function () {
       getPuntos()
-      console.log("aca");
       vm.marcadores = [];
     }
 
