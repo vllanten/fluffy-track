@@ -36,7 +36,7 @@
       );
     };
 
-    function getPuntos() {
+    function getPuntos(center, zoom) {
 
       var inicial = ""
       var final = new Date(vm.dateFin.valueOf() + vm.dateFin.getTimezoneOffset() * 60000);
@@ -67,11 +67,8 @@
 
           uiGmapGoogleMapApi.then(function () {
             vm.maps.map = {
-              "center": {
-                "latitude": -33.454838,
-                "longitude": -70.6827659
-              },
-              "zoom": 12,
+              "center": center,
+              "zoom": zoom,
               "options": {
                 "minZoom": 3,
                 "scrollwheel": false
@@ -106,7 +103,9 @@
     });
 
     vm.refreshWidget = function () {
-      getPuntos()
+      console.log(vm.maps.map.center);
+      console.log(vm.maps.map.zoom);
+      getPuntos(vm.maps.map.center, vm.maps.map.zoom)
       vm.marcadores = [];
     }
 
