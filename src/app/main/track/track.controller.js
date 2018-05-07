@@ -103,8 +103,8 @@
     });
 
     vm.refreshWidget = function () {
-      console.log(vm.maps.map.center);
-      console.log(vm.maps.map.zoom);
+      // console.log(vm.maps.map.center);
+      // console.log(vm.maps.map.zoom);
       getPuntos(vm.maps.map.center, vm.maps.map.zoom)
       vm.marcadores = [];
     }
