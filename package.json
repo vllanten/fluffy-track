@@ -5,8 +5,8 @@
     "scripts": {
         "test": "gulp test",
         "serve": "gulp serve",
-        "build": "gulp",
-        "predeploy" : "npm run build",
+        "build": "gulp --production",
+        "predeploy" : "npm run build  && rm -fr dist/bower_components",
         "deploy" : "scp -r -i ~/ClientesOpenVPN/AWSJessie.pem dist/ ec2-user@54.148.196.216:/home/ec2-user"
     },
     "devDependencies": {

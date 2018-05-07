@@ -19,32 +19,38 @@
                     <md-option ng-value="topping.id_dispositivo" ng-repeat="topping in vm.dispositivos">{{topping.nombre}}</md-option>
                   </md-select>
                 </md-input-container>
-
                 <md-input-container flex="" class="md-icon-float md-default-theme flex" >
-                    <div flex-gt-xs>
-                      <md-radio-group ng-model="vm.tipo" class="md-primary" ng-init="vm.tipo = 1" >
-                        <md-radio-button ng-value="1"> Intervalos<br/> </md-radio-button>
+                  <div flex-gt-xs>
+                    <small>Buscar por</small> <br>
+                    <md-radio-group ng-model="vm.tipo_busqueda" class="md-primary" ng-init="vm.tipo_busqueda = 1" >
+                        <md-radio-button ng-value="1"> Intervalo<br/> </md-radio-button>
                           <md-radio-button ng-value="2"> Fechas <br/> </md-radio-button>
                       </md-radio-group>
                     </div>
                 </md-input-container>
 
-                <div ng-show="vm.tipo == 2">
+                <div ng-show="vm.tipo_busqueda == 2">
                     <md-input-container flex="" class="md-icon-float md-default-theme flex">
                         <div flex-gt-xs>
-                          <md-datepicker ng-model="vm.dateInicio" md-placeholder="Fecha inicio" md-open-on-focus></md-datepicker>
+                          <md-datepicker
+                            ng-model="vm.dateInicio" md-placeholder="Fecha inicio"
+                            ng-change="vm.changeDate()"
+                            md-open-on-focus
+                            md-max-date="vm.maxDate" ></md-datepicker>
                         </div>
                       </md-input-container>
                       <md-input-container flex="" class="md-icon-float md-default-theme flex">
                         <div flex-gt-xs>
-                          <md-datepicker ng-model="vm.dateFin" md-placeholder="Fecha Fin" md-open-on-focus></md-datepicker>
+                          <md-datepicker ng-model="vm.dateFin" md-placeholder="Fecha Fin"
+                          md-open-on-focus
+                          md-min-date="vm.minDate"
+                          md-max-date="vm.maxDate"></md-datepicker>
                         </div>
                       </md-input-container>
                 </div>
 
-                <div ng-show="vm.tipo == 1">
+                <div ng-show="vm.tipo_busqueda == 1">
                     <md-input-container flex="" class="md-icon-float md-default-theme flex">
-                        <label>Intervalo</label>
                         <md-select ng-model="vm.selectedIntervalo">
                           <md-option ng-value="15" ng-init="vm.selectedIntervalo = 15 ">Últimos 15 minutos</md-option>
                           <md-option ng-value="60">Última hora</md-option>
@@ -96,8 +102,8 @@
               }
 
               md-input-container {
-                padding: 0px !important;
-                margin: 0px !important;
+                padding: 5px !important;
+                margin: 5px !important;
               }
 
             </style>
