@@ -47,24 +47,29 @@
 
     function getPuntos(center, zoom) {
 
-      var final = new Date(vm.dateFin.valueOf() + vm.dateFin.getTimezoneOffset() * 60000);
-
-      var rango_fin = moment(final).format('YYYY-MM-DD HH:mm:ss');
+      //ahora
+      var _now = new Date();
 
       if (vm.tipo_busqueda == 2 ){
         //búsqueda por fechas
-        var rango_inicio = moment(vm.dateInicio).format('YYYY-MM-DD') + " 00:00:00";
+        //fecha fin seleccionada + horario actual
+        var nf = new Date(moment(vm.dateFin).format('YYYY-MM-DD')+ " " +moment(_now).format('HH:mm:ss'))
+        // aplico timezone
+        var nf2 = new Date(nf.valueOf() + _now.getTimezoneOffset() * 60000)
+        var rango_fin = moment(nf2).format('YYYY-MM-DD HH:mm:ss');
+
+        var ni = new Date(moment(vm.dateInicio).format('YYYY-MM-DD') + " 00:00:00");
+        var ni2 = new Date(ni.valueOf() + _now.getTimezoneOffset() * 60000)
+        var rango_inicio = moment(ni2).format('YYYY-MM-DD HH:mm:ss');
+
       }else{
         //búsqueda por intervalo
-        //ahora
-        var _now = new Date();
         //ahora GTM 0
         var now = new Date(_now.valueOf() + _now.getTimezoneOffset() * 60000);
-        //ahora GTM 0 - el intervalo
         var rango_inicio = moment(now).subtract(vm.selectedIntervalo, 'minutes').format('YYYY-MM-DD HH:mm:ss');
+        var rango_fin = moment(now).format('YYYY-MM-DD HH:mm:ss');
       }
 
-      console.log(rango_inicio)
       var query = {
         id_dispositivo: vm.selectedDispositivos ,
         fecha_ini: rango_inicio,
