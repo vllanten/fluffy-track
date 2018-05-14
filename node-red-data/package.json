@@ -1,0 +1,10 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "dependencies": {
+        "node-red-node-mysql": "0.0.16",
+        "node-red-contrib-redis": "1.1.5",
+        "node-red-contrib-bcrypt": "0.0.47"
+    }
+}
