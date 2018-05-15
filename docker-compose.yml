@@ -23,6 +23,7 @@ services:
       - ./node-red-data:/data
     ports:
       - 1880:1880
+      - 8081:8081
   redis:
     image: redis:4.0
     volumes:
