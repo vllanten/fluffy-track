@@ -5,7 +5,7 @@
 
     var config = {};
 
-    config.baseUrl = "http://54.148.196.216:1880";
+    config.baseUrl = "http://104.131.187.65:1880";
 
     return config;
 

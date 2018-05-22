@@ -6,8 +6,8 @@
         "test": "gulp test",
         "serve": "gulp serve",
         "build": "gulp --production",
-        "predeploy" : "npm run build  && rm -fr dist/bower_components",
-        "deploy" : "scp -r -i ~/ClientesOpenVPN/AWSJessie.pem dist/ ec2-user@54.148.196.216:/home/ec2-user"
+        "predeploy": "npm run build  && rm -fr dist/bower_components",
+        "deploy": "scp -r -i ~/ClientesOpenVPN/AWSJessie.pem dist/ ec2-user@54.148.196.216:/home/ec2-user"
     },
     "devDependencies": {
         "browser-sync": "~2.9.11",

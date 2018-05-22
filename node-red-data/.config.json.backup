@@ -549,6 +549,23 @@
      "file": "/data/node_modules/node-red-node-mysql/68-mysql.js"
     }
    }
+  },
+  "node-red-contrib-bcrypt": {
+   "name": "node-red-contrib-bcrypt",
+   "version": "0.0.47",
+   "local": true,
+   "nodes": {
+    "bcrypt": {
+     "name": "bcrypt",
+     "types": [
+      "bcrypt"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-bcrypt",
+     "file": "/data/node_modules/node-red-contrib-bcrypt/bcrypt/bcrypt.js"
+    }
+   }
   }
  },
  "_credentialSecret": "e51873e4616173b3d8d99587c3f35d914faeac5f7e24788cc8631aa981544558",

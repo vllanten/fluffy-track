@@ -28,6 +28,17 @@ services:
     image: redis:4.0
     volumes:
       - ./redisdata:/data
+  web:
+    image: nginx:1.13
+    networks:
+      - default
+      - gps
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 80:80
+      - 443:443
 volumes:
   gps-mysql:
     external : true

@@ -7,3 +7,4 @@ coverage/
 dist/
 node-red-data/node_modules
 redisdata
+package-lock.json
